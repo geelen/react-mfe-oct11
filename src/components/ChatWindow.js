@@ -1,17 +1,23 @@
 import React from 'react'
 
-const ChatWindow = () => (
+const ChatWindow = ({ messages }) => (
   <div className="ChatWindow">
-    <div className="ChatWindow_Entry">
-      <img className="ChatWindow_Avatar"
-           src="http://fillmurray.com/98/98"
-           alt="Bill Murray"/>
-      <div className="ChatWindow_Lines">
-        <div>Line one</div>
-        <div>Line two</div>
-        <div>Line three</div>
-      </div>
-    </div>
+    {
+      messages.map((entry, i) => (
+        <div className="ChatWindow_Entry" key={i}>
+          <img className="ChatWindow_Avatar"
+               src={entry.avatar_url}
+               alt={entry.name}/>
+          <div className="ChatWindow_Lines">
+            {
+              entry.lines.map((line, i) => (
+                <div key={i}>{ line }</div>
+              ))
+            }
+          </div>
+        </div>
+      ))
+    }
   </div>
 )
 
