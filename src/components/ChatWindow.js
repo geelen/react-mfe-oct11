@@ -1,12 +1,11 @@
 import React from 'react'
-import { observer } from 'mobx-react'
-import store from '../store'
+import { connect } from 'react-redux'
 
-const ChatWindow = () => (
+const ChatWindow = ({ messages }) => (
   console.log("Rendered ChatWindow!"),
   <div className="ChatWindow">
     {
-      store.messages.map((entry, i) => (
+      messages.map((entry, i) => (
         <div className="ChatWindow_Entry" key={i}>
           <img className="ChatWindow_Avatar"
                src={entry.avatar_url}
@@ -24,4 +23,8 @@ const ChatWindow = () => (
   </div>
 )
 
-export default observer(ChatWindow)
+export default connect(
+  store => ({
+    messages: store.messages
+  })
+)(ChatWindow)
