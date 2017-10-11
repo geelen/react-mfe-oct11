@@ -9,6 +9,17 @@ const foo = ({ a, ...other_stuff }) => {
 }
 foo(obj)
 
+const AppBody = ({ onClick }) => (
+  <div>
+    <p className="App-intro">
+      To get started, edit <code>src/App.js</code> and save to reload.
+    </p>
+    <p className="App-intro">
+      <button type="button" onClick={onClick}>Click me!</button>
+    </p>
+  </div>
+)
+
 class App extends Component {
   state = { clicked: false }
 
@@ -17,19 +28,12 @@ class App extends Component {
   }
 
   render() {
-    const greeting = this.state.clicked
-      ? 'WELCOME TO REACT'
-      : 'Welcome to React'
+    const { clicked } = this.state
 
     return (
       <div className="App">
-        <AppHeader greeting={greeting}/>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p className="App-intro">
-          <button type="button" onClick={this.handleClick}>Click me!</button>
-        </p>
+        <AppHeader loud={clicked}/>
+        <AppBody onClick={this.handleClick}/>
       </div>
     )
   }
