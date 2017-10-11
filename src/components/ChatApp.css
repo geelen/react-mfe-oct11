@@ -1,0 +1,12 @@
+.ChatApp_Wrapper {
+  height: 100vh;
+}
+
+.ChatWindow {
+  background: grey;
+}
+
+.MessageInput {
+  background: orange;
+  height: 4rem;
+}
