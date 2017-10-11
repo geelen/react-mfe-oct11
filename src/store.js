@@ -32,7 +32,8 @@ export default () => {
     messagesReducer,
     ORIGINAL_STATE,
     applyMiddleware(
-      logger
+      logger,
+      thunk
     )
   )
 }

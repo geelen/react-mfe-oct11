@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { addMessage } from '../actions'
 
 class MessageInput extends React.Component {
   state = { input_value: '' }
@@ -10,10 +11,7 @@ class MessageInput extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    this.props.dispatch({
-      type: 'ADD_NEW_MESSAGE',
-      message: this.state.input_value
-    })
+    this.props.addMessage(this.state.input_value)
     this.setState({ input_value: '' })
   }
 
@@ -36,4 +34,7 @@ class MessageInput extends React.Component {
   }
 }
 
-export default connect()(MessageInput)
+export default connect(
+  null,
+  { addMessage }
+)(MessageInput)
