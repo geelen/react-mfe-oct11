@@ -1,26 +1,20 @@
 import React from 'react'
-import { observable } from 'mobx'
-import { observer } from 'mobx-react'
 import { connect } from 'react-redux'
 
-const state = observable({
-  input_value: ''
-})
-
-const updateValue = (event) => {
-  state.input_value = event.target.value
-}
-
-
 class MessageInput extends React.Component {
+  state = { input_value: '' }
+
+  updateValue = (event) => {
+    this.setState({ input_value: event.target.value })
+  }
 
   handleSubmit = (event) => {
     event.preventDefault()
     this.props.dispatch({
       type: 'ADD_NEW_MESSAGE',
-      message: state.input_value
+      message: this.state.input_value
     })
-    state.input_value = ''
+    this.setState({ input_value: '' })
   }
 
   render() {
@@ -29,8 +23,8 @@ class MessageInput extends React.Component {
             onSubmit={this.handleSubmit}>
         <div className="MessageInput_Input">
           <input type="text"
-                 value={state.input_value}
-                 onChange={updateValue}/>
+                 value={this.state.input_value}
+                 onChange={this.updateValue}/>
         </div>
         <div className="MessageInput_Button">
           <button type="submit">
@@ -42,4 +36,4 @@ class MessageInput extends React.Component {
   }
 }
 
-export default connect()(observer(MessageInput))
+export default connect()(MessageInput)
