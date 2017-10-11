@@ -2,26 +2,12 @@ import React, { Component } from 'react'
 import logo from './logo.svg'
 import './App.css'
 
-const obj = {
-  a() {
-    return this
-  },
-  b: function () {
-    return this
-  },
-  c: () => {
-    return this
-  },
-  d: () => this
+const obj = { a: 1, b: 2, c: 3 }
+const foo = ({ a, ...other_stuff }) => {
+  console.log(a)
+  console.log(other_stuff)
 }
-
-console.log(obj.a())
-console.log(obj.b())
-console.log(obj.c())
-console.log(obj.d())
-
-const e = obj.a
-console.log(e())
+foo(obj)
 
 const AppHeader = () => (
   <header className="App-header">
