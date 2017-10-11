@@ -1,11 +1,12 @@
 import React from 'react'
 import { observer } from 'mobx-react'
+import store from '../store'
 
-const ChatWindow = ({ messages }) => (
+const ChatWindow = () => (
   console.log("Rendered ChatWindow!"),
   <div className="ChatWindow">
     {
-      messages.map((entry, i) => (
+      store.messages.map((entry, i) => (
         <div className="ChatWindow_Entry" key={i}>
           <img className="ChatWindow_Avatar"
                src={entry.avatar_url}

@@ -1,4 +1,15 @@
 import React from 'react'
+import store from '../store'
+
+const handleNewMessage = (message) => {
+  store.messages.push({
+    avatar_url: 'http://fillmurray.com/102/102',
+    name: 'Me',
+    lines: [
+      message
+    ]
+  })
+}
 
 class MessageInput extends React.Component {
   state = { input_value: '' }
@@ -9,7 +20,7 @@ class MessageInput extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    this.props.onNewMessage(this.state.input_value)
+    handleNewMessage(this.state.input_value)
     this.setState({ input_value: '' })
   }
 
