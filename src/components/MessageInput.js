@@ -1,49 +1,37 @@
 import React from 'react'
-import store from '../store'
+import { observable } from 'mobx'
+import { observer } from 'mobx-react'
 
-const handleNewMessage = (message) => {
-  store.messages.push({
-    avatar_url: 'http://fillmurray.com/102/102',
-    name: 'Me',
-    lines: [
-      message
-    ]
-  })
+import { addNewMessage } from '../actions'
+
+const state = observable({
+  input_value: ''
+})
+
+const updateValue = (event) => {
+  state.input_value = event.target.value
 }
 
-class MessageInput extends React.Component {
-  state = { input_value: '' }
-
-  updateValue = (event) => {
-    this.setState({ input_value: event.target.value })
-  }
-
-  handleSubmit = (event) => {
-    event.preventDefault()
-    handleNewMessage(this.state.input_value)
-    this.setState({ input_value: '' })
-  }
-
-  render() {
-    console.log("Rendered MessageInput!")
-    const { input_value } = this.state
-
-    return (
-      <form className="MessageInput"
-            onSubmit={this.handleSubmit}>
-        <div className="MessageInput_Input">
-          <input type="text"
-                 value={input_value}
-                 onChange={this.updateValue}/>
-        </div>
-        <div className="MessageInput_Button">
-          <button type="submit">
-            <span>➡</span>
-          </button>
-        </div>
-      </form>
-    )
-  }
+const handleSubmit = (event) => {
+  event.preventDefault()
+  addNewMessage(state.input_value)
+  state.input_value = ''
 }
 
-export default MessageInput
+const MessageInput = () => (
+  <form className="MessageInput"
+        onSubmit={handleSubmit}>
+    <div className="MessageInput_Input">
+      <input type="text"
+             value={state.input_value}
+             onChange={updateValue}/>
+    </div>
+    <div className="MessageInput_Button">
+      <button type="submit">
+        <span>➡</span>
+      </button>
+    </div>
+  </form>
+)
+
+export default observer(MessageInput)
