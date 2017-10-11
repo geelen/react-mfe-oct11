@@ -1,17 +1,22 @@
 import React from 'react'
+import styled from 'styled-components'
 
 import MessageInput from './MessageInput'
 import ChatWindow from './ChatWindow'
 import './ChatApp.css'
 
+const Wrapper = styled.div`
+  height: 100vh;
+`
+
 class ChatApp extends React.Component {
   render() {
     console.log("Rendered ChatApp!")
     return (
-      <div className="ChatApp_Wrapper">
+      <Wrapper>
         <ChatWindow/>
         <MessageInput/>
-      </div>
+      </Wrapper>
     )
   }
 }

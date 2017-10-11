@@ -1,30 +1,3 @@
-.ChatApp_Wrapper {
-  height: 100vh;
-}
-
-.ChatWindow {
-  background: #eee;
-  height: calc(100vh - 4rem);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
-.ChatWindow_Entry {
-  display: flex;
-  padding: 1rem;
-}
-
-.ChatWindow_Avatar {
-  margin-right: 1rem;
-  border-radius: 0.5rem;
-  width: 4rem;
-  height: 4rem;
-}
-
-.ChatWindow_Lines {
-  line-height: 1.4;
-}
 
 .MessageInput {
   background: #444;

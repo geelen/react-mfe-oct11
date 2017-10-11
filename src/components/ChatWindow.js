@@ -1,26 +1,55 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import styled from 'styled-components'
+
+const height = '4rem'
+
+const Wrapper = styled.div`
+  background: #eee;
+  height: calc(100vh - ${ height });
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+`
+
+const Entry = styled.div`
+  display: flex;
+  padding: 1rem;
+`
+
+const Avatar = styled.img`
+  margin-right: 1rem;
+  border-radius: 0.5rem;
+  width: ${ height };
+  height: ${ height };
+  ${ props => props.special && `
+    box-shadow: 0 0 4px limegreen; 
+  ` }
+`
+
+const Lines = styled.div`
+  line-height: 1.4;
+`
 
 const ChatWindow = ({ messages }) => (
-  console.log("Rendered ChatWindow!"),
-  <div className="ChatWindow">
+  <Wrapper>
     {
       messages.map((entry, i) => (
-        <div className="ChatWindow_Entry" key={i}>
-          <img className="ChatWindow_Avatar"
-               src={entry.avatar_url}
-               alt={entry.name}/>
-          <div className="ChatWindow_Lines">
+        <Entry key={i}>
+          <Avatar special={i % 2 === 1}
+                  src={entry.avatar_url}
+                  alt={entry.name}/>
+          <Lines>
             {
               entry.lines.map((line, i) => (
-                <div key={i}>{ line }</div>
+                <div key={i}>{line}</div>
               ))
             }
-          </div>
-        </div>
+          </Lines>
+        </Entry>
       ))
     }
-  </div>
+  </Wrapper>
 )
 
 export default connect(
