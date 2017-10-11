@@ -1,10 +1,5 @@
 import React from 'react'
 
-const Wrapper = 'div'
-const Entry = 'div'
-const Avatar = 'div'
-const Lines = 'div'
-
 const ChatWindow = () => (
   <div className="ChatWindow">
     <div className="ChatWindow_Entry">
