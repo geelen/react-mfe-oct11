@@ -27,6 +27,34 @@
 }
 
 .MessageInput {
-  background: orange;
+  background: #444;
   height: 4rem;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.MessageInput_Input {
+  flex-grow: 1;
+}
+.MessageInput_Input > input {
+  width: calc(100% - 2rem);
+  margin: 1rem auto;
+  font-size: 1.25rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+}
+.MessageInput_Button > button {
+  background: mediumseagreen;
+  border: none;
+  color: white;
+  height: 2.5rem;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+  padding: 0 1.5rem;
+}
+.MessageInput_Button > button > span {
+  display: block;
+  transform: rotate(-90deg);
 }

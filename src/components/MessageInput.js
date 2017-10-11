@@ -1,13 +1,16 @@
 import React from 'react'
 
-const Input = 'div'
-const Button = 'div'
-
 const MessageInput = () => (
-  <div className="MessageInput">
-    <Input/>
-    <Button/>
-  </div>
+  <form className="MessageInput">
+    <div className="MessageInput_Input">
+      <input type="text"/>
+    </div>
+    <div className="MessageInput_Button">
+      <button type="submit">
+        <span>➡</span>
+      </button>
+    </div>
+  </form>
 )
 
 export default MessageInput
