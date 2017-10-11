@@ -9,7 +9,7 @@ class MessageInput extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    console.log(this.state.input_value)
+    this.props.onNewMessage(this.state.input_value)
     this.setState({ input_value: '' })
   }
 

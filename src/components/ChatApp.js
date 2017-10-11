@@ -28,13 +28,25 @@ class ChatApp extends React.Component {
     ]
   }
 
+  handleNewMessage = (message) => {
+    this.setState({
+      messages: this.state.messages.concat({
+        avatar_url: 'http://fillmurray.com/102/102',
+        name: 'Me',
+        lines: [
+          message
+        ]
+      })
+    })
+  }
+
   render() {
     const { messages } = this.state
 
     return (
       <div className="ChatApp_Wrapper">
         <ChatWindow messages={messages}/>
-        <MessageInput/>
+        <MessageInput onNewMessage={this.handleNewMessage}/>
       </div>
     )
   }
