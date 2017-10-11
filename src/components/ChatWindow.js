@@ -1,6 +1,8 @@
 import React from 'react'
+import { observer } from 'mobx-react'
 
 const ChatWindow = ({ messages }) => (
+  console.log("Rendered ChatWindow!"),
   <div className="ChatWindow">
     {
       messages.map((entry, i) => (
@@ -21,4 +23,4 @@ const ChatWindow = ({ messages }) => (
   </div>
 )
 
-export default ChatWindow
+export default observer(ChatWindow)

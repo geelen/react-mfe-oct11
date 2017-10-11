@@ -14,6 +14,7 @@ class MessageInput extends React.Component {
   }
 
   render() {
+    console.log("Rendered MessageInput!")
     const { input_value } = this.state
 
     return (

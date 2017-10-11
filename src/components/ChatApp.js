@@ -14,10 +14,10 @@ class ChatApp extends React.Component {
         message
       ]
     })
-    this.forceUpdate()
   }
 
   render() {
+    console.log("Rendered ChatApp!")
     return (
       <div className="ChatApp_Wrapper">
         <ChatWindow messages={store.messages}/>
